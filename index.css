@@ -6,7 +6,8 @@
   color-scheme: light dark;
 }
 
-html, body {
+html,
+body {
   height: 100%;
   width: 100%;
   overflow-x: hidden;
@@ -16,4 +17,22 @@ html, body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+}
+
+@layer utilities {
+  .animate-neon-blink {
+    animation: neon-blink 1.5s infinite;
+  }
+
+  @keyframes neon-blink {
+
+    0%,
+    100% {
+      opacity: 1;
+    }
+
+    50% {
+      opacity: 0.2;
+    }
+  }
 }

@@ -6,6 +6,7 @@ import { ThemeProvider } from './components/ThemeContext';
 import { SplashScreen } from './components/SplashScreen';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Layout } from './components/Layout';
+import { NotificationProvider } from './components/NotificationContext';
 import { LandingPage } from './pages/LandingPage';
 import { LoginPage } from './pages/LoginPage';
 import { RoleSelectPage } from './pages/RoleSelectPage';
@@ -85,9 +86,11 @@ const App: React.FC = () => {
           <motion.div key="app" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5 }}>
             <ThemeProvider>
               <AuthProvider>
-                <Router>
-                  <AppRoutes />
-                </Router>
+                <NotificationProvider>
+                  <Router>
+                    <AppRoutes />
+                  </Router>
+                </NotificationProvider>
               </AuthProvider>
             </ThemeProvider>
           </motion.div>
