@@ -1,0 +1,6 @@
+
+{
+  "name": "GLINT",
+  "description": "Where Skills Shine & Get Hired. A social-first hiring platform for creators and hirers.",
+  "requestFramePermissions": ["camera", "microphone"]
+}
