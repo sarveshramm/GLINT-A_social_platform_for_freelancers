@@ -5,7 +5,7 @@ import { AuthProvider, useAuth } from './components/AuthContext';
 import { ThemeProvider } from './components/ThemeContext';
 import { SplashScreen } from './components/SplashScreen';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Layout } from './components/Layout';
+import { Layout } from './components/Layout'; 
 import { NotificationProvider } from './components/NotificationContext';
 import { LandingPage } from './pages/LandingPage';
 import { LoginPage } from './pages/LoginPage';
