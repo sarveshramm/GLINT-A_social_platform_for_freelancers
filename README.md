@@ -7,7 +7,7 @@ View your app in AI Studio: https://ai.studio/apps/temp/
  
 ## Run Locallyn
 **Prerequisite:**  Node.js  
-
+ 
 
 1. Install dependencies: 
    `npm install` 
