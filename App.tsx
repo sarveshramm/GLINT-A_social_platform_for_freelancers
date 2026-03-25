@@ -7,7 +7,7 @@ import { SplashScreen } from './components/SplashScreen';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Layout } from './components/Layout'; 
 import { NotificationProvider } from './components/NotificationContext';
-import { LandingPage } from './pages/LandingPage';
+import { LandingPage } from './pages/LandingPage'; 
 import { LoginPage } from './pages/LoginPage';
 import { RoleSelectPage } from './pages/RoleSelectPage';
 import { Dashboard } from './pages/Dashboard';
