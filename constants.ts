@@ -8,7 +8,7 @@ export const COLORS = {
   lightBg: '#FFFFFF',
 };
 
-export const MOCK_USERS: User[] = [
+export const MOCK_USERS: User[] = [ 
   {
     id: 'user1',
     email: 'alex@creator.com',
