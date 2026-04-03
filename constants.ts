@@ -4,7 +4,7 @@ import { User, UserRole, Post, Job } from './types';
 export const COLORS = {
   primary: '#FF8C00',
   secondary: '#4B0082',
-  darkBg: '#000000',
+  darkBg: '#000000', 
   lightBg: '#FFFFFF',
 };
 
