@@ -1,4 +1,4 @@
-# ✨ GLINT — Where Skills Shine
+#  GLINT — Where Skills Shine
 
 > A high-performance social ecosystem where talent is discovered by what they build, not what they bid.
 
@@ -9,11 +9,11 @@
 
 ---
 
-## 📌 About
+##  About
 
 **GLINT** is a professional social platform designed to bridge the gap between freelance creators and hirers. Unlike traditional freelancing platforms where talent competes through bidding wars, GLINT lets creators showcase their actual work — portfolio pieces, code demos, video edits, and case studies — allowing hirers to discover talent organically through quality, not price.
 
-### 🎯 Problem Statement
+###  Problem Statement
 
 Traditional freelancing platforms (Fiverr, Upwork) suffer from:
 - **Race to the bottom** pricing due to competitive bidding
@@ -21,7 +21,7 @@ Traditional freelancing platforms (Fiverr, Upwork) suffer from:
 - **Limited portfolio showcasing** capabilities
 - **No direct creator-hirer networking**
 
-### 💡 Solution
+###  Solution
 
 GLINT provides:
 - A **social media-style feed** where creators post their work
@@ -32,11 +32,11 @@ GLINT provides:
 
 ---
 
-## 🛠️ Tech Stack
+##  Tech Stack
 
 | Layer | Technology | Purpose |
 |-------|-----------|---------|
-| **Frontend** | React 19 + TypeScript | UI components & routing |
+| **Frontend** | React  + JvaScript | UI components & routing |
 | **Styling** | Vanilla CSS + Framer Motion | Dark theme design & animations |
 | **Database** | Supabase (PostgreSQL) | Users, posts, jobs, chats, hires |
 | **Authentication** | Supabase Auth | Email + password with email verification |
@@ -48,35 +48,35 @@ GLINT provides:
 
 ---
 
-## ✨ Features
+##  Features
 
 ### For Creators
-- 📸 **Portfolio Posts** — Share images, videos, code snippets, and case studies
-- 🤖 **AI-Assisted Descriptions** — Gemini generates professional post descriptions
-- 💼 **Job Matching** — Get notified about jobs matching your skillset
-- 💬 **Direct Messaging** — Chat with hirers in real-time
-- 📊 **Profile Analytics** — Track followers, projects, and engagement
-- 💰 **Rate Cards** — Set hourly and project-based pricing
+-  **Portfolio Posts** — Share images, videos, code snippets, and case studies
+-  **AI-Assisted Descriptions** — Gemini generates professional post descriptions
+-  **Job Matching** — Get notified about jobs matching your skillset
+-  **Direct Messaging** — Chat with hirers in real-time
+-  **Profile Analytics** — Track followers, projects, and engagement
+-  **Rate Cards** — Set hourly and project-based pricing
 
 ### For Hirers
-- 🔍 **Discovery Feed** — Browse creator portfolios by category
-- 🧠 **AI Talent Matching** — Describe your needs, Gemini finds the best creators
-- 📋 **Job Posting** — Post opportunities with required skills & budgets
-- 🤝 **Direct Hiring** — Hire creators without bidding
-- 📨 **Project Management** — Track hire status (requested → active → completed)
-- ⭐ **Reviews** — Leave reviews for completed collaborations
+-  **Discovery Feed** — Browse creator portfolios by category
+-  **AI Talent Matching** — Describe your needs, Gemini finds the best creators
+-  **Job Posting** — Post opportunities with required skills & budgets
+-  **Direct Hiring** — Hire creators without bidding
+-  **Project Management** — Track hire status (requested → active → completed)
+-  **Reviews** — Leave reviews for completed collaborations
 
 ### Platform Features
-- 🔐 **Secure Auth** — Email + password signup with email verification
-- 🌙 **Dark Mode** — Premium dark theme with glassmorphism effects
-- 📱 **Responsive Design** — Mobile-friendly across all screen sizes
-- 🔔 **Real-time Notifications** — Activity alerts, messages, and job matches
-- 👥 **Social Graph** — Follow/unfollow creators with feed personalization
-- 🎨 **AI Image Generation** — Generate portfolio visuals using Gemini
+-  **Secure Auth** — Email + password signup with email verification
+-  **Dark Mode** — Premium dark theme with glassmorphism effects
+-  **Responsive Design** — Mobile-friendly across all screen sizes
+-  **Real-time Notifications** — Activity alerts, messages, and job matches
+-  **Social Graph** — Follow/unfollow creators with feed personalization
+-  **AI Image Generation** — Generate portfolio visuals using Gemini
 
 ---
 
-## 🏗️ Architecture
+##  Architecture
 
 ```
 ┌─────────────────┐     ┌─────────────────┐     ┌─────────────────┐
@@ -98,7 +98,7 @@ GLINT provides:
 
 ---
 
-## 📁 Project Structure
+##  Project Structure
 
 ```
 GLINT/
@@ -151,92 +151,8 @@ GLINT/
 
 ---
 
-## 🚀 Getting Started
 
-### Prerequisites
-
-- **Node.js** v18+ — [Download](https://nodejs.org)
-- **Supabase** account — [Sign up](https://supabase.com)
-- **Vercel** account — [Sign up](https://vercel.com)
-- **Gemini API Key** — [Get key](https://aistudio.google.com/apikey)
-
-### 1. Clone & Install
-
-```bash
-git clone https://github.com/YOUR-USERNAME/GLINT-A_social_platform_for_freelancers.git
-cd GLINT-A_social_platform_for_freelancers
-npm install
-```
-
-### 2. Set Up Supabase
-
-1. Create a new project at [supabase.com](https://supabase.com)
-2. Go to **SQL Editor** → paste and run `supabase_schema.sql`
-3. Go to **Storage** → create a public bucket named `glint-uploads`
-4. Go to **Settings → API** → copy your Project URL and anon key
-
-### 3. Set Up Environment Variables
-
-Create a `.env` file in the project root:
-
-```env
-VITE_SUPABASE_URL=https://your-project.supabase.co
-VITE_SUPABASE_ANON_KEY=your-anon-key
-VITE_API_URL=https://your-backend.vercel.app
-```
-
-### 4. Run Locally
-
-```bash
-npm run dev
-```
-
-Open [http://localhost:3000](http://localhost:3000)
-
-### 5. Deploy Backend to Vercel
-
-1. Push the `api/` folder to a separate GitHub repo
-2. Import to Vercel → set `GEMINI_API_KEY` environment variable
-3. Deploy
-
-### 6. Deploy Frontend to Netlify
-
-```bash
-npm run build
-```
-
-Drag the `dist/` folder to [Netlify](https://app.netlify.com) → Deploy manually
-
----
-
-## 🔒 Environment Variables
-
-| Variable | Where | Description |
-|----------|-------|-------------|
-| `VITE_SUPABASE_URL` | Frontend (.env) | Supabase project URL |
-| `VITE_SUPABASE_ANON_KEY` | Frontend (.env) | Supabase public API key |
-| `VITE_API_URL` | Frontend (.env) | Vercel backend URL |
-| `GEMINI_API_KEY` | Vercel dashboard | Google Gemini API key (server-side only) |
-
----
-
-## 📸 Screenshots
-
-### Landing Page
-Dark, premium landing page with animated gradient text and call-to-action buttons.
-
-### Dashboard
-Personalized social feed with trending posts, matching jobs sidebar, and featured creators.
-
-### AI Talent Discovery
-AI-powered search where hirers describe their project needs and Gemini matches them with the best creators from the talent pool.
-
-### Profile Page
-Full creator profile with portfolio projects, skill tags, rate cards, reviews, and hire functionality.
-
----
-
-## 🗄️ Database Schema
+##  Database Schema
 
 | Table | Description |
 |-------|-------------|
@@ -253,7 +169,7 @@ All tables have **Row Level Security (RLS)** enabled with appropriate read/write
 
 ---
 
-## 🤖 AI Features (Gemini Integration)
+##  AI Features (Gemini Integration)
 
 | Feature | Endpoint | Description |
 |---------|----------|-------------|
@@ -265,7 +181,7 @@ All AI calls are routed through **Vercel serverless functions** to keep the API 
 
 ---
 
-## 👥 User Roles
+##  User Roles
 
 ### Creator
 - Post portfolio work (images, videos, code, case studies)
@@ -283,13 +199,10 @@ All AI calls are routed through **Vercel serverless functions** to keep the API 
 
 ---
 
-## 📄 License
-
-This project is open source and available under the [MIT License](LICENSE).
 
 ---
 
-## 🙏 Acknowledgements
+##  Acknowledgements
 
 - [React](https://react.dev) — UI framework
 - [Supabase](https://supabase.com) — Backend-as-a-Service
@@ -302,7 +215,7 @@ This project is open source and available under the [MIT License](LICENSE).
 ---
 
 <div align="center">
-  <b>Built with ❤️ for the freelance community</b>
+  <b>Built for the freelance community</b>
   <br />
   <i>GLINT — Where Skills Shine ✨</i>
 </div>
