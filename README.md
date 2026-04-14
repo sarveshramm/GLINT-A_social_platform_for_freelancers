@@ -3,7 +3,8 @@
 > A high-performance social ecosystem where talent is discovered by what they build, not what they bid.
 
 [![Live Demo](https://img.shields.io/badge/🚀_Live_Demo-glint--freelancer--platform.netlify.app-FF6B00?style=for-the-badge)](https://glint-freelancer-platform.netlify.app/)
-[![Built With](https://img.shields.io/badge/Built_With-React_+_TypeScript-61DAFB?style=for-the-badge&logo=react)](https://react.dev)
+
+[![Built With](https://img.shields.io/badge/Built_With-React_+_JavaScript-61DAFB?style=for-the-badge&logo=react)](https://react.dev)
 [![Database](https://img.shields.io/badge/Database-Supabase-3ECF8E?style=for-the-badge&logo=supabase)](https://supabase.com)
 [![AI](https://img.shields.io/badge/AI-Google_Gemini-4285F4?style=for-the-badge&logo=google)](https://ai.google.dev)
 
@@ -36,7 +37,7 @@ GLINT provides:
 
 | Layer | Technology | Purpose |
 |-------|-----------|---------|
-| **Frontend** | React 19 + TypeScript | UI components & routing |
+| **Frontend** | React + JavaScript | UI components & routing |
 | **Styling** | Vanilla CSS + Framer Motion | Dark theme design & animations |
 | **Database** | Supabase (PostgreSQL) | Users, posts, jobs, chats, hires |
 | **Authentication** | Supabase Auth | Email + password with email verification |
