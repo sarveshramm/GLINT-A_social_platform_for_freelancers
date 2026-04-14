@@ -1,8 +1,11 @@
 
-import { GoogleOAuthProvider } from '@react-oauth/google';
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App'; 
+import { initializeData } from './services/dataService';
+
+// Initialize Supabase connection
+initializeData();
  
 const rootElement = document.getElementById('root');
 if (!rootElement) {
@@ -12,8 +15,6 @@ if (!rootElement) {
 const root = ReactDOM.createRoot(rootElement);
 root.render(
   <React.StrictMode>
-    <GoogleOAuthProvider clientId={import.meta.env.VITE_GOOGLE_CLIENT_ID || "YOUR_GOOGLE_CLIENT_ID"}>
-      <App />
-    </GoogleOAuthProvider>
+    <App />
   </React.StrictMode>
 );

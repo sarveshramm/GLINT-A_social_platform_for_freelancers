@@ -1,6 +1,6 @@
   
 import React from 'react';
-import { HashRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { AuthProvider, useAuth } from './components/AuthContext';
 import { ThemeProvider } from './components/ThemeContext';
 import { SplashScreen } from './components/SplashScreen';
@@ -33,7 +33,7 @@ const ProtectedRoute = ({ children, role }: { children: React.ReactNode, role?: 
     </div>
   );
   if (!user) return <Navigate to="/login" />;
-  if (user.role === UserRole.UNSET && window.location.hash !== '#/role-select') return <Navigate to="/role-select" />;
+  if (user.role === UserRole.UNSET && window.location.pathname !== '/role-select') return <Navigate to="/role-select" />;
   if (role && user.role !== role) return <Navigate to="/" />;
 
   return <Layout>{children}</Layout>;
