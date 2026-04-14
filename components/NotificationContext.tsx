@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useEffect, useState } from 'react';
+import React, { createContext, useContext, useEffect, useState, useCallback } from 'react';
 import { useAuth } from './AuthContext';
 import { DataService } from '../services/dataService';
 import { Notification } from '../types';
@@ -25,7 +25,7 @@ export const NotificationProvider: React.FC<{ children: React.ReactNode }> = ({ 
     const [activityCount, setActivityCount] = useState(0);
     const [profileCount, setProfileCount] = useState(0);
 
-    const refreshCounts = () => {
+    const refreshCounts = useCallback(async () => {
         if (!user) {
             setMessageCount(0);
             setActivityCount(0);
@@ -33,7 +33,7 @@ export const NotificationProvider: React.FC<{ children: React.ReactNode }> = ({ 
             return;
         }
 
-        const notifications = DataService.getNotifications(user.id);
+        const notifications = await DataService.getNotifications(user.id);
         const unread = notifications.filter(n => !n.read);
 
         // Messages: Count unread notifications of type 'message'
@@ -55,14 +55,14 @@ export const NotificationProvider: React.FC<{ children: React.ReactNode }> = ({ 
         setMessageCount(msgs);
         setActivityCount(activity);
         setProfileCount(profile);
-    };
+    }, [user]);
 
     useEffect(() => {
         refreshCounts();
-        // Poll every 3 seconds to update counts (simulating real-time)
-        const interval = setInterval(refreshCounts, 3000);
+        // Poll every 10 seconds to update counts (reduced frequency for Supabase)
+        const interval = setInterval(refreshCounts, 10000);
         return () => clearInterval(interval);
-    }, [user]);
+    }, [user, refreshCounts]);
 
     return (
         <NotificationContext.Provider value={{ messageCount, activityCount, profileCount, refreshCounts }}>

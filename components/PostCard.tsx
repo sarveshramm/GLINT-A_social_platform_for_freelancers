@@ -19,24 +19,29 @@ export const PostCard: React.FC<{ post: Post }> = ({ post }) => {
   const isTrending = (post.likes.length + post.commentCount) > 10;
 
   useEffect(() => {
-    if (showComments) {
-      setComments(DataService.getComments(post.id));
-    }
+    const loadComments = async () => {
+      if (showComments) {
+        const c = await DataService.getComments(post.id);
+        setComments(c);
+      }
+    };
+    loadComments();
   }, [showComments, post.id]);
 
-  const handleLike = (e: React.MouseEvent) => {
+  const handleLike = async (e: React.MouseEvent) => {
     e.stopPropagation();
     if (!user) return;
-    DataService.toggleLikePost(post.id, user.id);
+    await DataService.toggleLikePost(post.id, user.id);
     setIsLiked(!isLiked);
     setLikesCount(prev => isLiked ? prev - 1 : prev + 1);
   };
 
-  const handleCommentSubmit = (e: React.FormEvent) => {
+  const handleCommentSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!user || !newComment.trim()) return;
-    DataService.addComment(post.id, user.id, user.name, newComment);
-    setComments(DataService.getComments(post.id));
+    await DataService.addComment(post.id, user.id, user.name, newComment);
+    const c = await DataService.getComments(post.id);
+    setComments(c);
     setNewComment('');
   };
 

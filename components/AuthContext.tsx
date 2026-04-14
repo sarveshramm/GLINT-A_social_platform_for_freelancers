@@ -1,16 +1,14 @@
 
 import React, { createContext, useContext, useEffect, useState } from 'react';
-import { useGoogleLogin, googleLogout } from '@react-oauth/google';
-import axios from 'axios';
+import { supabase } from '../services/supabaseClient';
 import { User, UserRole } from '../types';
-import { Storage } from '../services/storage';
 import { DataService } from '../services/dataService';
 
 // Interfaces
 interface AuthContextType {
   user: User | null;
-  login: (provider: 'google' | 'apple') => Promise<void>;
-  loginWithEmail: (email: string) => Promise<void>;
+  signUp: (email: string, password: string, name: string) => Promise<{ success: boolean; message: string }>;
+  signIn: (email: string, password: string) => Promise<{ success: boolean; message: string }>;
   logout: () => void;
   updateRole: (role: UserRole) => void;
   updateUser: (user: User) => void;
@@ -23,159 +21,188 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const [user, setUser] = useState<User | null>(null);
   const [isLoading, setIsLoading] = useState(true);
 
-  // Initialize from local storage on load
+  // Initialize — check for existing Supabase session
   useEffect(() => {
-    const savedUser = Storage.get<User>('auth_user');
-    if (savedUser) {
-      setUser(savedUser);
-    }
-    setIsLoading(false);
+    const initAuth = async () => {
+      const { data: { session } } = await supabase.auth.getSession();
+      if (session?.user) {
+        await loadOrCreateUser(session.user);
+      }
+      setIsLoading(false);
+    };
+    initAuth();
+
+    // Listen for auth state changes
+    const { data: { subscription } } = supabase.auth.onAuthStateChange(
+      async (event, session) => {
+        console.log('Auth event:', event);
+        if ((event === 'SIGNED_IN' || event === 'TOKEN_REFRESHED') && session?.user) {
+          await loadOrCreateUser(session.user);
+          setIsLoading(false);
+        } else if (event === 'SIGNED_OUT') {
+          setUser(null);
+          setIsLoading(false);
+        }
+      }
+    );
+
+    return () => subscription.unsubscribe();
   }, []);
 
-  // Google Login Handler
-  const loginGoogle = useGoogleLogin({
-    onSuccess: async (tokenResponse) => {
-      setIsLoading(true);
-      try {
-        // 1. Get User Info from Google
-        const userInfo = await axios.get(
-          'https://www.googleapis.com/oauth2/v3/userinfo',
-          { headers: { Authorization: `Bearer ${tokenResponse.access_token}` } }
-        );
-
-        const googleUser = userInfo.data;
-
-        // 2. Check if user already exists in our "database"
-        const users = Storage.get<User[]>('users') || [];
-        let appUser = users.find(u => u.email === googleUser.email);
-
-        // 3. Register if new
-        if (!appUser) {
-          appUser = {
-            id: googleUser.sub, // Use Google ID as user ID
-            email: googleUser.email,
-            name: googleUser.name,
-            username: googleUser.email.split('@')[0], // Generate username
-            role: UserRole.UNSET,
-            skillTags: [],
-            avatar: googleUser.picture,
-            following: [],
-            followers: [],
-            createdAt: Date.now()
-          };
-          // Save to "DB"
-          Storage.set('users', [...users, appUser]);
-        }
-
-        // 4. Set Session
-        setUser(appUser);
-        Storage.set('auth_user', appUser);
-
-      } catch (error) {
-        console.error("Google verify failed", error);
-        alert("Login failed. Please check your network or Client ID.");
-      } finally {
-        setIsLoading(false);
-      }
-    },
-    onError: error => {
-      console.error('Login Failed:', error);
-      setIsLoading(false);
-      alert("Google Login popup closed or failed.");
+  /**
+   * Load user from Supabase DB, or create a new user record if first login
+   */
+  const loadOrCreateUser = async (authUser: any) => {
+    // Try by auth ID first
+    const existingUser = await DataService.getUserById(authUser.id);
+    if (existingUser) {
+      setUser(existingUser);
+      return;
     }
-  });
 
-  const loginWithEmail = async (email: string) => {
+    // Try by email
+    const allUsers = await DataService.getUsers();
+    const byEmail = allUsers.find(u => u.email === authUser.email);
+    if (byEmail) {
+      setUser(byEmail);
+      return;
+    }
+
+    // Create new user in DB
+    const displayName = authUser.user_metadata?.full_name || authUser.user_metadata?.name || authUser.email?.split('@')[0] || 'User';
+    const newUser: User = {
+      id: authUser.id,
+      email: authUser.email || '',
+      name: displayName,
+      username: (authUser.email?.split('@')[0] || 'user').replace(/[^a-zA-Z0-9]/g, '') + '_' + Date.now().toString(36).slice(-4),
+      role: UserRole.UNSET,
+      skillTags: [],
+      avatar: authUser.user_metadata?.avatar_url || `https://ui-avatars.com/api/?name=${encodeURIComponent(displayName)}&background=FF6B00&color=fff`,
+      following: [],
+      followers: [],
+      createdAt: Date.now(),
+    };
+
+    const dbUser = {
+      id: newUser.id,
+      email: newUser.email,
+      name: newUser.name,
+      username: newUser.username,
+      role: newUser.role,
+      skill_tags: newUser.skillTags,
+      avatar: newUser.avatar,
+      following: newUser.following,
+      followers: newUser.followers,
+      created_at: newUser.createdAt,
+    };
+    
+    const { error } = await supabase.from('users').insert(dbUser);
+    if (error) {
+      console.error('Error creating user record:', error);
+    }
+    setUser(newUser);
+  };
+
+  /**
+   * Sign up with email + password
+   * Supabase sends a verification email automatically
+   */
+  const signUp = async (email: string, password: string, name: string): Promise<{ success: boolean; message: string }> => {
     setIsLoading(true);
-    // Simulate API delay
-    await new Promise(resolve => setTimeout(resolve, 800));
-
     try {
-      const users = Storage.get<User[]>('users') || [];
-      let appUser = users.find(u => u.email.toLowerCase() === email.toLowerCase());
+      const { data, error } = await supabase.auth.signUp({
+        email,
+        password,
+        options: {
+          data: { full_name: name, name: name },
+          emailRedirectTo: window.location.origin + '/login',
+        },
+      });
 
-      if (!appUser) {
-        // Register new user
-        appUser = {
-          id: `user_${Date.now()}`,
-          email: email,
-          name: email.split('@')[0],
-          username: email.split('@')[0].replace(/[^a-zA-Z0-9]/g, ''),
-          role: UserRole.UNSET,
-          skillTags: [],
-          following: [],
-          followers: [],
-          createdAt: Date.now()
-        };
-        Storage.set('users', [...users, appUser]);
+      if (error) {
+        console.error('SignUp error:', error);
+        return { success: false, message: error.message };
       }
 
-      setUser(appUser);
-      Storage.set('auth_user', appUser);
-    } catch (error) {
-      console.error("Email login failed", error);
-      alert("Login failed.");
+      // Check if email confirmation is required
+      if (data.user && !data.session) {
+        // User created but needs email verification
+        return { 
+          success: true, 
+          message: `Verification email sent to ${email}! Please check your inbox (and spam folder) and click the link to verify your account. Then come back and sign in.` 
+        };
+      }
+
+      // If session exists, user is auto-confirmed (Supabase setting)
+      if (data.session && data.user) {
+        await loadOrCreateUser(data.user);
+        return { success: true, message: 'Account created successfully!' };
+      }
+
+      return { success: true, message: 'Please check your email to verify your account.' };
+    } catch (err: any) {
+      console.error('SignUp failed:', err);
+      return { success: false, message: 'Sign up failed. Please try again.' };
     } finally {
       setIsLoading(false);
     }
   };
 
-  const login = async (provider: 'google' | 'apple') => {
-    if (provider === 'google') {
-      const clientId = import.meta.env.VITE_GOOGLE_CLIENT_ID;
-      if (!clientId || clientId.includes("YOUR_GOOGLE_CLIENT_ID")) {
-        // Bypass for User who wants "Direct Fix" without keys
-        const mockUser: User = {
-          id: 'test-google-user',
-          email: 'test@gmail.com',
-          name: 'Test User',
-          username: 'testuser',
-          role: UserRole.UNSET,
-          skillTags: [],
-          avatar: 'https://ui-avatars.com/api/?name=Test+User',
-          following: [],
-          followers: [],
-          createdAt: Date.now()
-        };
+  /**
+   * Sign in with email + password
+   */
+  const signIn = async (email: string, password: string): Promise<{ success: boolean; message: string }> => {
+    setIsLoading(true);
+    try {
+      const { data, error } = await supabase.auth.signInWithPassword({
+        email,
+        password,
+      });
 
-        // Register mock user if not exists
-        const users = Storage.get<User[]>('users') || [];
-        if (!users.find(u => u.id === mockUser.id)) {
-          Storage.set('users', [...users, mockUser]);
+      if (error) {
+        console.error('SignIn error:', error);
+        if (error.message.includes('Email not confirmed')) {
+          return { success: false, message: 'Please verify your email first. Check your inbox for the verification link.' };
         }
-
-        setUser(mockUser);
-        Storage.set('auth_user', mockUser);
-        return;
+        if (error.message.includes('Invalid login credentials')) {
+          return { success: false, message: 'Invalid email or password. Please check and try again.' };
+        }
+        return { success: false, message: error.message };
       }
-      loginGoogle();
-    } else {
-      alert("Apple Login requires valid developer credentials. Please use Google for this demo.");
+
+      if (data.user) {
+        await loadOrCreateUser(data.user);
+        return { success: true, message: 'Signed in successfully!' };
+      }
+
+      return { success: false, message: 'Login failed. Please try again.' };
+    } catch (err: any) {
+      console.error('SignIn failed:', err);
+      return { success: false, message: 'Sign in failed. Please try again.' };
+    } finally {
+      setIsLoading(false);
     }
   };
 
-  const logout = () => {
-    googleLogout();
+  const logout = async () => {
+    await supabase.auth.signOut();
     setUser(null);
-    Storage.remove('auth_user');
   };
 
-  const updateRole = (role: UserRole) => {
+  const updateRole = async (role: UserRole) => {
     if (!user) return;
     const updated = { ...user, role };
     setUser(updated);
-    Storage.set('auth_user', updated);
-    DataService.updateUser(updated);
+    await DataService.updateUser(updated);
   };
 
-  const updateUser = (updatedUser: User) => {
+  const updateUser = async (updatedUser: User) => {
     setUser(updatedUser);
-    Storage.set('auth_user', updatedUser);
-    DataService.updateUser(updatedUser);
+    await DataService.updateUser(updatedUser);
   };
 
   return (
-    <AuthContext.Provider value={{ user, login, loginWithEmail, logout, updateRole, updateUser, isLoading }}>
+    <AuthContext.Provider value={{ user, signUp, signIn, logout, updateRole, updateUser, isLoading }}>
       {children}
     </AuthContext.Provider>
   );
