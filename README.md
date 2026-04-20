@@ -18,7 +18,7 @@
 
 Traditional freelancing platforms (Fiverr, Upwork) suffer from:
 - **Race to the bottom** pricing due to competitive bidding
-- **No social proof** beyond star ratings
+- **No social proof** beyond star ratings 
 - **Limited portfolio showcasing** capabilities
 - **No direct creator-hirer networking**
 
