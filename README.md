@@ -1,6 +1,6 @@
 # GLINT — Where Skills Shine
 
-> A high-performance social ecosystem where talent is discovered by what they build, not what they bid.
+> An AI Powered Social platform freelancers and Indepedent workers.
 
 [![Live Demo](https://img.shields.io/badge/Live_Demo-glint--freelancer--platform.netlify.app-FF6B00?style=for-the-badge)](https://glint-freelancer-platform.netlify.app/)
 
