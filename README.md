@@ -1,6 +1,6 @@
 # GLINT — Where Skills Shine
 
-> An AI Powered Social platform freelancers and Indepedent workers.
+>An AI-Powered Social media platform for freelancers and indepedent Workers.
 
 [![Live Demo](https://img.shields.io/badge/Live_Demo-glint--freelancer--platform.netlify.app-FF6B00?style=for-the-badge)](https://glint-freelancer-platform.netlify.app/)
 
@@ -22,9 +22,10 @@ GLINT now integrates Artificial Intelligence, Machine Learning, and Deep Learnin
 Traditional freelancing platforms (Fiverr, Upwork) suffer from:
 
 - **Race to the bottom** pricing due to competitive bidding
+- **No social proof** beyond star ratings
+- **Limited portfolio showcasing** capabilities
 - **No intelligent recommendation system**
 - **Fake portfolios and spam accounts**
-- **Limited portfolio showcasing** capabilities
 - **No direct creator-hirer networking**
 
 ### Solution
@@ -41,9 +42,9 @@ GLINT provides:
 
 ---
 
-## AI & ML Integrations
+# AI & ML Integrations
 
-### 1. AI Talent Recommendation Engine
+## 1. AI Talent Recommendation Engine
 
 GLINT uses Machine Learning and Deep Neural Networks (DNN) to intelligently recommend:
 
@@ -52,20 +53,20 @@ GLINT uses Machine Learning and Deep Neural Networks (DNN) to intelligently reco
 - Personalized creator feeds
 - Similar talent based on skills and engagement
 
-#### Features
+### Features
 - Smart creator-job matching
 - Personalized recommendations
 - Feed ranking based on user interactions
 - Skill-based creator discovery
 
-#### Technologies Used
+### Technologies Used
 - Python
 - TensorFlow
 - Scikit-learn
 - Recommendation Algorithms
 - NLP Embeddings
 
-#### AI Flow
+### AI Flow
 
 ```text
 User Activity → ML Model → Recommendation Engine → Personalized Results
@@ -73,7 +74,7 @@ User Activity → ML Model → Recommendation Engine → Personalized Results
 
 ---
 
-### 2. Portfolio Quality Detection using Deep Learning
+## 2. Portfolio Quality Detection using Deep Learning
 
 GLINT automatically analyzes uploaded portfolios using Deep Learning models.
 
@@ -84,19 +85,19 @@ The AI evaluates:
 - Content relevance
 - Portfolio category
 
-#### Features
+### Features
 - Automatic portfolio scoring
 - AI-based image understanding
 - Professional quality analysis
 - Smart portfolio categorization
 
-#### Technologies Used
+### Technologies Used
 - CNN (Convolutional Neural Networks)
 - TensorFlow
 - OpenCV
 - ResNet Models
 
-#### AI Flow
+### AI Flow
 
 ```text
 Portfolio Upload → Deep Learning Model → Quality Score & Insights
@@ -104,7 +105,7 @@ Portfolio Upload → Deep Learning Model → Quality Score & Insights
 
 ---
 
-### 3. AI Fraud / Spam Detection
+## 3. AI Fraud / Spam Detection
 
 GLINT uses AI models to maintain a secure and trusted platform.
 
@@ -115,19 +116,19 @@ The system detects:
 - Suspicious activity
 - Scam behavior
 
-#### Features
+### Features
 - Spam account detection
 - Fraud activity monitoring
 - AI moderation system
 - Intelligent content filtering
 
-#### Technologies Used
+### Technologies Used
 - Random Forest
 - Scikit-learn
 - NLP Text Classification
 - Python ML Pipelines
 
-#### AI Flow
+### AI Flow
 
 ```text
 User Content → AI Detection Model → Safe/Spam Classification
@@ -156,6 +157,15 @@ User Content → AI Detection Model → Safe/Spam Classification
 ---
 
 ## Features
+### Authentication & Security
+- Strong authentication system using Supabase Auth
+- Secure email/password login with encrypted credentials
+- Email verification during account registration
+- Protected routes and authenticated user sessions
+- Secure API communication with backend validation
+- Row Level Security (RLS) enabled in Supabase
+- Spam and fraud protection using AI moderation
+- Session management and access control
 
 ### For Creators
 - Portfolio Posts — Share images, videos, code snippets, and case studies
@@ -182,6 +192,7 @@ User Content → AI Detection Model → Safe/Spam Classification
 - Social Graph — Follow/unfollow creators with feed personalization
 - AI Fraud Detection — Intelligent spam and fake profile filtering
 - AI Feed Personalization — ML-powered content recommendations
+- AI Portfolio Ranking — Smart quality-based creator visibility
 
 ---
 
@@ -219,7 +230,7 @@ GLINT/
 │   ├── spam-detection.js       # Fraud & spam detection
 │   ├── portfolio-analysis.js   # Deep learning portfolio analysis
 │   ├── package.json
-│   └── vercel.json
+│   └── vercel.json             # CORS & routing config
 │
 ├── ml-service/                 # AI & ML services
 │   ├── recommendation/
@@ -228,7 +239,14 @@ GLINT/
 │   ├── models/
 │   └── app.py
 │
-├── components/
+├── components/                 # Reusable React components
+│   ├── AuthContext.tsx
+│   ├── NotificationContext.tsx
+│   ├── ThemeContext.tsx
+│   ├── Layout.tsx
+│   ├── PostCard.tsx
+│   └── SplashScreen.tsx
+│
 ├── pages/
 ├── services/
 ├── App.tsx
@@ -244,17 +262,89 @@ GLINT/
 
 ---
 
+## Getting Started
 
+### Prerequisites
 
-## AI Features Summary
+- **Node.js** v18+ — [Download](https://nodejs.org)
+- **Python** 3.10+
+- **Supabase** account — [Sign up](https://supabase.com)
+- **Vercel** account — [Sign up](https://vercel.com)
+- **Gemini API Key** — [Get key](https://aistudio.google.com/apikey)
 
-| Feature | AI Technology |
-|---------|---------------|
-| Talent Recommendation | DNN + Recommendation ML |
-| Portfolio Detection | CNN + Deep Learning |
-| Fraud Detection | Random Forest + NLP |
-| Smart Matching | Gemini AI |
-| Feed Personalization | ML Ranking System |
+### 1. Clone & Install
+
+```bash
+git clone https://github.com/YOUR-USERNAME/GLINT-A_social_platform_for_freelancers.git
+
+cd GLINT-A_social_platform_for_freelancers
+
+npm install
+```
+
+### 2. Install AI Dependencies
+
+```bash
+pip install tensorflow scikit-learn fastapi uvicorn opencv-python
+```
+
+### 3. Set Up Supabase
+
+1. Create a new project at [supabase.com](https://supabase.com)
+2. Go to **SQL Editor** → paste and run `supabase_schema.sql`
+3. Go to **Storage** → create a public bucket named `glint-uploads`
+4. Go to **Settings → API** → copy your Project URL and anon key
+
+### 4. Set Up Environment Variables
+
+Create a `.env` file in the project root:
+
+```env
+VITE_SUPABASE_URL=https://your-project.supabase.co
+VITE_SUPABASE_ANON_KEY=your-anon-key
+VITE_API_URL=https://your-backend.vercel.app
+```
+
+### 5. Run Frontend
+
+```bash
+npm run dev
+```
+
+### 6. Run AI Backend
+
+```bash
+uvicorn app:app --reload
+```
+
+Open [http://localhost:3000](http://localhost:3000)
+
+---
+
+## Environment Variables
+
+| Variable | Where | Description |
+|----------|-------|-------------|
+| `VITE_SUPABASE_URL` | Frontend (.env) | Supabase project URL |
+| `VITE_SUPABASE_ANON_KEY` | Frontend (.env) | Supabase public API key |
+| `VITE_API_URL` | Frontend (.env) | Backend API URL |
+| `GEMINI_API_KEY` | Backend | Google Gemini API key |
+
+---
+
+## Screenshots
+
+### Landing Page
+Dark, premium landing page with animated gradient text and call-to-action buttons.
+
+### Dashboard
+Personalized social feed with trending posts, matching jobs sidebar, and featured creators.
+
+### AI Talent Discovery
+AI-powered search where hirers describe their project needs and the recommendation engine finds the best creators from the talent pool.
+
+### Profile Page
+Full creator profile with portfolio projects, skill tags, AI analysis, rate cards, reviews, and hire functionality.
 
 ---
 
@@ -275,21 +365,37 @@ All tables have **Row Level Security (RLS)** enabled with appropriate read/write
 
 ---
 
+## AI Features
+
+| Feature | Endpoint | Description |
+|---------|----------|-------------|
+| **AI Assist** | `/api/gemini-assist` | Generates professional descriptions for portfolio posts |
+| **AI Match** | `/api/gemini-match` | Matches hirers with best-fit creators |
+| **Recommendation Engine** | `/api/recommendation-api` | ML-powered creator & job recommendations |
+| **Portfolio Analysis** | `/api/portfolio-analysis` | Deep Learning portfolio quality detection |
+| **Spam Detection** | `/api/spam-detection` | AI fraud & spam filtering |
+| **AI Image** | `/api/gemini-image` | Generates creative visuals for portfolio content |
+
+All AI calls are routed through secure backend APIs to protect sensitive keys and model endpoints.
+
+---
+
 ## User Roles
 
 ### Creator
-- Post portfolio work
+- Post portfolio work (images, videos, code, case studies)
+- Set rate cards (hourly & project rates)
+- Explore and apply to jobs
 - Receive AI recommendations
 - Analyze portfolio quality
-- Explore jobs
-- Accept/decline hire requests
+- Track active projects
 
 ### Hirer
 - Browse creator portfolios
+- Post jobs with skill requirements
 - Use AI to discover talent
-- Post jobs
-- Hire creators directly
-- Manage projects
+- Send hire requests with budget
+- Manage ongoing projects
 
 ---
 
@@ -301,14 +407,14 @@ This project is open source and available under the [MIT License](LICENSE).
 
 ## Acknowledgements
 
-- [React](https://react.dev)
-- [Supabase](https://supabase.com)
-- [TensorFlow](https://tensorflow.org)
-- [Scikit-learn](https://scikit-learn.org)
-- [Google Gemini](https://ai.google.dev)
-- [Framer Motion](https://www.framer.com/motion/)
-- [Vercel](https://vercel.com)
-- [Netlify](https://netlify.com)
+- [React](https://react.dev) — UI framework
+- [Supabase](https://supabase.com) — Backend-as-a-Service
+- [TensorFlow](https://tensorflow.org) — Deep Learning framework
+- [Scikit-learn](https://scikit-learn.org) — Machine Learning tools
+- [Google Gemini](https://ai.google.dev) — AI capabilities
+- [Framer Motion](https://www.framer.com/motion/) — Animations
+- [Vercel](https://vercel.com) — Serverless deployment
+- [Netlify](https://netlify.com) — Frontend hosting
 
 ---
 
