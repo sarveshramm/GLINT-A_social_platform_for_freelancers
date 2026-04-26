@@ -1,39 +1,141 @@
-# ✨ GLINT — Where Skills Shine
+# GLINT — Where Skills Shine
 
 > A high-performance social ecosystem where talent is discovered by what they build, not what they bid.
 
-[![Live Demo](https://img.shields.io/badge/🚀_Live_Demo-glint--freelancer--platform.netlify.app-FF6B00?style=for-the-badge)](https://glint-freelancer-platform.netlify.app/)
+[![Live Demo](https://img.shields.io/badge/Live_Demo-glint--freelancer--platform.netlify.app-FF6B00?style=for-the-badge)](https://glint-freelancer-platform.netlify.app/)
 
 [![Built With](https://img.shields.io/badge/Built_With-React_+_JavaScript-61DAFB?style=for-the-badge&logo=react)](https://react.dev)
 [![Database](https://img.shields.io/badge/Database-Supabase-3ECF8E?style=for-the-badge&logo=supabase)](https://supabase.com)
 [![AI](https://img.shields.io/badge/AI-Google_Gemini-4285F4?style=for-the-badge&logo=google)](https://ai.google.dev)
+[![ML](https://img.shields.io/badge/ML-TensorFlow-FF6F00?style=for-the-badge&logo=tensorflow)](https://tensorflow.org)
 
 ---
 
-## 📌 About
+## About
 
 **GLINT** is a professional social platform designed to bridge the gap between freelance creators and hirers. Unlike traditional freelancing platforms where talent competes through bidding wars, GLINT lets creators showcase their actual work — portfolio pieces, code demos, video edits, and case studies — allowing hirers to discover talent organically through quality, not price.
 
-### 🎯 Problem Statement
+GLINT now integrates Artificial Intelligence, Machine Learning, and Deep Learning technologies to create a smarter and safer hiring ecosystem.
+
+### Problem Statement
 
 Traditional freelancing platforms (Fiverr, Upwork) suffer from:
+
 - **Race to the bottom** pricing due to competitive bidding
-- **No social proof** beyond star ratings 
+- **No intelligent recommendation system**
+- **Fake portfolios and spam accounts**
 - **Limited portfolio showcasing** capabilities
 - **No direct creator-hirer networking**
 
-### 💡 Solution
+### Solution
 
 GLINT provides:
+
 - A **social media-style feed** where creators post their work
 - **Direct hiring** without bidding — hirers find talent through content
-- **AI-powered talent matching** using Google Gemini
+- **AI-powered talent matching** using Machine Learning and Gemini
+- **Deep Learning portfolio quality analysis**
+- **AI spam and fraud detection**
 - **Built-in messaging** for real-time collaboration
 - **Transparent monetization** with 10% platform commission
 
 ---
 
-## 🛠️ Tech Stack
+## AI & ML Integrations
+
+### 1. AI Talent Recommendation Engine
+
+GLINT uses Machine Learning and Deep Neural Networks (DNN) to intelligently recommend:
+
+- Best creators for hirers
+- Matching jobs for creators
+- Personalized creator feeds
+- Similar talent based on skills and engagement
+
+#### Features
+- Smart creator-job matching
+- Personalized recommendations
+- Feed ranking based on user interactions
+- Skill-based creator discovery
+
+#### Technologies Used
+- Python
+- TensorFlow
+- Scikit-learn
+- Recommendation Algorithms
+- NLP Embeddings
+
+#### AI Flow
+
+```text
+User Activity → ML Model → Recommendation Engine → Personalized Results
+```
+
+---
+
+### 2. Portfolio Quality Detection using Deep Learning
+
+GLINT automatically analyzes uploaded portfolios using Deep Learning models.
+
+The AI evaluates:
+- Creativity
+- Professionalism
+- Design quality
+- Content relevance
+- Portfolio category
+
+#### Features
+- Automatic portfolio scoring
+- AI-based image understanding
+- Professional quality analysis
+- Smart portfolio categorization
+
+#### Technologies Used
+- CNN (Convolutional Neural Networks)
+- TensorFlow
+- OpenCV
+- ResNet Models
+
+#### AI Flow
+
+```text
+Portfolio Upload → Deep Learning Model → Quality Score & Insights
+```
+
+---
+
+### 3. AI Fraud / Spam Detection
+
+GLINT uses AI models to maintain a secure and trusted platform.
+
+The system detects:
+- Fake creator profiles
+- Spam job postings
+- Duplicate portfolios
+- Suspicious activity
+- Scam behavior
+
+#### Features
+- Spam account detection
+- Fraud activity monitoring
+- AI moderation system
+- Intelligent content filtering
+
+#### Technologies Used
+- Random Forest
+- Scikit-learn
+- NLP Text Classification
+- Python ML Pipelines
+
+#### AI Flow
+
+```text
+User Content → AI Detection Model → Safe/Spam Classification
+```
+
+---
+
+## Tech Stack
 
 | Layer | Technology | Purpose |
 |-------|-----------|---------|
@@ -42,202 +144,121 @@ GLINT provides:
 | **Database** | Supabase (PostgreSQL) | Users, posts, jobs, chats, hires |
 | **Authentication** | Supabase Auth | Email + password with email verification |
 | **File Storage** | Supabase Storage | Avatar, banner & portfolio uploads |
-| **AI Backend** | Vercel Serverless Functions | Gemini API proxy (secure) |
-| **AI Model** | Google Gemini 2.0 Flash | Content generation, talent matching |
+| **Backend APIs** | Vercel Serverless Functions | API handling |
+| **AI Backend** | Python + FastAPI | ML & Deep Learning APIs |
+| **AI/ML** | TensorFlow + Scikit-learn | Recommendation & detection systems |
+| **Computer Vision** | OpenCV + CNN | Portfolio analysis |
+| **NLP** | Sentence Transformers | Skill & text understanding |
+| **AI Model** | Google Gemini 2.0 Flash | Content generation & smart matching |
 | **Frontend Hosting** | Netlify | Production deployment with SPA routing |
 | **Backend Hosting** | Vercel | Serverless API functions |
 
 ---
 
-## ✨ Features
+## Features
 
 ### For Creators
-- 📸 **Portfolio Posts** — Share images, videos, code snippets, and case studies
-- 🤖 **AI-Assisted Descriptions** — Gemini generates professional post descriptions
-- 💼 **Job Matching** — Get notified about jobs matching your skillset
-- 💬 **Direct Messaging** — Chat with hirers in real-time
-- 📊 **Profile Analytics** — Track followers, projects, and engagement
-- 💰 **Rate Cards** — Set hourly and project-based pricing
+- Portfolio Posts — Share images, videos, code snippets, and case studies
+- AI-Assisted Descriptions — Gemini generates professional post descriptions
+- AI Portfolio Analysis — Deep Learning analyzes portfolio quality
+- AI Job Recommendations — Personalized opportunities based on skills
+- Direct Messaging — Chat with hirers in real-time
+- Profile Analytics — Track followers, projects, and engagement
+- Rate Cards — Set hourly and project-based pricing
 
 ### For Hirers
-- 🔍 **Discovery Feed** — Browse creator portfolios by category
-- 🧠 **AI Talent Matching** — Describe your needs, Gemini finds the best creators
-- 📋 **Job Posting** — Post opportunities with required skills & budgets
-- 🤝 **Direct Hiring** — Hire creators without bidding
-- 📨 **Project Management** — Track hire status (requested → active → completed)
-- ⭐ **Reviews** — Leave reviews for completed collaborations
+- Discovery Feed — Browse creator portfolios by category
+- AI Talent Matching — AI recommends best-fit creators
+- Job Posting — Post opportunities with required skills & budgets
+- Direct Hiring — Hire creators without bidding
+- Project Management — Track hire status (requested → active → completed)
+- Reviews — Leave reviews for completed collaborations
 
 ### Platform Features
-- 🔐 **Secure Auth** — Email + password signup with email verification
-- 🌙 **Dark Mode** — Premium dark theme with glassmorphism effects
-- 📱 **Responsive Design** — Mobile-friendly across all screen sizes
-- 🔔 **Real-time Notifications** — Activity alerts, messages, and job matches
-- 👥 **Social Graph** — Follow/unfollow creators with feed personalization
-- 🎨 **AI Image Generation** — Generate portfolio visuals using Gemini
+- Secure Auth — Email + password signup with email verification
+- Dark Mode — Premium dark theme with glassmorphism effects
+- Responsive Design — Mobile-friendly across all screen sizes
+- Real-time Notifications — Activity alerts, messages, and job matches
+- Social Graph — Follow/unfollow creators with feed personalization
+- AI Fraud Detection — Intelligent spam and fake profile filtering
+- AI Feed Personalization — ML-powered content recommendations
 
 ---
 
-## 🏗️ Architecture
+## Architecture
 
-```
+```text
 ┌─────────────────┐     ┌─────────────────┐     ┌─────────────────┐
 │                 │     │                 │     │                 │
-│    NETLIFY      │────▶│    VERCEL       │     │   SUPABASE      │
-│   (Frontend)    │     │   (API Proxy)   │     │  (Database +    │
-│                 │     │                 │     │   Auth + Storage)│
-│  React + TS     │     │  Serverless     │     │                 │
-│  Framer Motion  │     │  Functions      │     │  PostgreSQL     │
-│  React Router   │     │                 │     │  Row Level Sec  │
-│                 │     │  gemini-assist  │     │  Realtime       │
-│                 │     │  gemini-match   │     │                 │
-│                 │     │  gemini-image   │     │                 │
+│    NETLIFY      │────▶│    VERCEL       │────▶│   AI/ML Layer   │
+│   (Frontend)    │     │   (APIs)        │     │                 │
+│                 │     │                 │     │ Recommendation  │
+│  React + TS     │     │  Serverless     │     │ Portfolio AI    │
+│  Framer Motion  │     │  Functions      │     │ Spam Detection  │
+│  React Router   │     │                 │     │ Gemini AI       │
+│                 │     │                 │     │                 │
 └────────┬────────┘     └────────┬────────┘     └────────┬────────┘
          │                       │                       │
-         │    Supabase SDK       │   Gemini API          │
-         └───────────────────────┴───────────────────────┘
+         │                       ▼                       │
+         │               ┌─────────────────┐             │
+         └──────────────▶│   SUPABASE      │◀────────────┘
+                         │ Database/Auth   │
+                         └─────────────────┘
 ```
 
 ---
 
-## 📁 Project Structure
+## Project Structure
 
-```
+```text
 GLINT/
 ├── api/                        # Vercel serverless functions
 │   ├── gemini-assist.js        # AI post description generator
 │   ├── gemini-match.js         # AI talent matching engine
-│   ├── gemini-image.js         # AI image generation
+│   ├── recommendation-api.js   # ML recommendation system
+│   ├── spam-detection.js       # Fraud & spam detection
+│   ├── portfolio-analysis.js   # Deep learning portfolio analysis
 │   ├── package.json
-│   └── vercel.json             # CORS & routing config
+│   └── vercel.json
 │
-├── components/                 # Reusable React components
-│   ├── AuthContext.tsx          # Supabase authentication provider
-│   ├── NotificationContext.tsx  # Real-time notification system
-│   ├── ThemeContext.tsx         # Dark/light theme provider
-│   ├── Layout.tsx               # App shell with navigation
-│   ├── PostCard.tsx             # Social feed post component
-│   └── SplashScreen.tsx         # Loading splash screen
+├── ml-service/                 # AI & ML services
+│   ├── recommendation/
+│   ├── portfolio-detection/
+│   ├── fraud-detection/
+│   ├── models/
+│   └── app.py
 │
-├── pages/                      # Route-based page components
-│   ├── LandingPage.tsx          # Public homepage
-│   ├── LoginPage.tsx            # Sign up / Sign in
-│   ├── RoleSelectPage.tsx       # Creator or Hirer selection
-│   ├── Dashboard.tsx            # Personalized feed
-│   ├── ProfilePage.tsx          # User profiles + portfolio
-│   ├── CreatePostPage.tsx       # Post creation with AI assist
-│   ├── ExploreJobsPage.tsx      # Job discovery for creators
-│   ├── PostJobPage.tsx          # Job posting for hirers
-│   ├── HirerDiscovery.tsx       # AI-powered talent search
-│   ├── HirerJobsPage.tsx        # Hirer's posted jobs
-│   ├── HireManagementPage.tsx   # Active project tracking
-│   ├── MessagesPage.tsx         # Real-time messaging
-│   ├── NotificationsPage.tsx    # Activity feed
-│   └── MonetizationPage.tsx     # Pricing plans
-│
-├── services/                   # Data & API services
-│   ├── supabaseClient.ts       # Supabase SDK initialization
-│   ├── dataService.ts          # All DB CRUD operations
-│   └── storageService.ts       # File upload handling
-│
-├── App.tsx                     # Root component + routing
-├── index.tsx                   # React entry point
-├── index.css                   # Global styles + design tokens
-├── types.ts                    # TypeScript type definitions
-├── vite.config.ts              # Build configuration
-├── netlify.toml                # Netlify deployment config
-├── supabase_schema.sql         # Database schema + seed data
-├── .env.example                # Environment variables template
-└── package.json                # Dependencies
+├── components/
+├── pages/
+├── services/
+├── App.tsx
+├── index.tsx
+├── index.css
+├── types.ts
+├── vite.config.ts
+├── netlify.toml
+├── supabase_schema.sql
+├── .env.example
+└── package.json
 ```
 
 ---
 
-## 🚀 Getting Started
 
-### Prerequisites
 
-- **Node.js** v18+ — [Download](https://nodejs.org)
-- **Supabase** account — [Sign up](https://supabase.com)
-- **Vercel** account — [Sign up](https://vercel.com)
-- **Gemini API Key** — [Get key](https://aistudio.google.com/apikey)
+## AI Features Summary
 
-### 1. Clone & Install
-
-```bash
-git clone https://github.com/YOUR-USERNAME/GLINT-A_social_platform_for_freelancers.git
-cd GLINT-A_social_platform_for_freelancers
-npm install
-```
-
-### 2. Set Up Supabase
-
-1. Create a new project at [supabase.com](https://supabase.com)
-2. Go to **SQL Editor** → paste and run `supabase_schema.sql`
-3. Go to **Storage** → create a public bucket named `glint-uploads`
-4. Go to **Settings → API** → copy your Project URL and anon key
-
-### 3. Set Up Environment Variables
-
-Create a `.env` file in the project root:
-
-```env
-VITE_SUPABASE_URL=https://your-project.supabase.co
-VITE_SUPABASE_ANON_KEY=your-anon-key
-VITE_API_URL=https://your-backend.vercel.app
-```
-
-### 4. Run Locally
-
-```bash
-npm run dev
-```
-
-Open [http://localhost:3000](http://localhost:3000)
-
-### 5. Deploy Backend to Vercel
-
-1. Push the `api/` folder to a separate GitHub repo
-2. Import to Vercel → set `GEMINI_API_KEY` environment variable
-3. Deploy
-
-### 6. Deploy Frontend to Netlify
-
-```bash
-npm run build
-```
-
-Drag the `dist/` folder to [Netlify](https://app.netlify.com) → Deploy manually
+| Feature | AI Technology |
+|---------|---------------|
+| Talent Recommendation | DNN + Recommendation ML |
+| Portfolio Detection | CNN + Deep Learning |
+| Fraud Detection | Random Forest + NLP |
+| Smart Matching | Gemini AI |
+| Feed Personalization | ML Ranking System |
 
 ---
 
-## 🔒 Environment Variables
-
-| Variable | Where | Description |
-|----------|-------|-------------|
-| `VITE_SUPABASE_URL` | Frontend (.env) | Supabase project URL |
-| `VITE_SUPABASE_ANON_KEY` | Frontend (.env) | Supabase public API key |
-| `VITE_API_URL` | Frontend (.env) | Vercel backend URL |
-| `GEMINI_API_KEY` | Vercel dashboard | Google Gemini API key (server-side only) |
-
----
-
-## 📸 Screenshots
-
-### Landing Page
-Dark, premium landing page with animated gradient text and call-to-action buttons.
-
-### Dashboard
-Personalized social feed with trending posts, matching jobs sidebar, and featured creators.
-
-### AI Talent Discovery
-AI-powered search where hirers describe their project needs and Gemini matches them with the best creators from the talent pool.
-
-### Profile Page
-Full creator profile with portfolio projects, skill tags, rate cards, reviews, and hire functionality.
-
----
-
-## 🗄️ Database Schema
+## Database Schema
 
 | Table | Description |
 |-------|-------------|
@@ -254,56 +275,45 @@ All tables have **Row Level Security (RLS)** enabled with appropriate read/write
 
 ---
 
-## 🤖 AI Features (Gemini Integration)
-
-| Feature | Endpoint | Description |
-|---------|----------|-------------|
-| **AI Assist** | `/api/gemini-assist` | Generates professional descriptions for portfolio posts |
-| **AI Match** | `/api/gemini-match` | Matches hirers with best-fit creators from the talent pool |
-| **AI Image** | `/api/gemini-image` | Generates creative visuals for portfolio content |
-
-All AI calls are routed through **Vercel serverless functions** to keep the API key secure (never exposed to the client).
-
----
-
-## 👥 User Roles
+## User Roles
 
 ### Creator
-- Post portfolio work (images, videos, code, case studies)
-- Set rate cards (hourly & project rates)
-- Explore and apply to jobs
+- Post portfolio work
+- Receive AI recommendations
+- Analyze portfolio quality
+- Explore jobs
 - Accept/decline hire requests
-- Track active projects
 
 ### Hirer
 - Browse creator portfolios
-- Post jobs with skill requirements
-- Use AI to find matching talent
-- Send hire requests with budget
-- Manage ongoing projects
+- Use AI to discover talent
+- Post jobs
+- Hire creators directly
+- Manage projects
 
 ---
 
-## 📄 License
+## License
 
 This project is open source and available under the [MIT License](LICENSE).
 
 ---
 
-## 🙏 Acknowledgements
+## Acknowledgements
 
-- [React](https://react.dev) — UI framework
-- [Supabase](https://supabase.com) — Backend-as-a-Service
-- [Google Gemini](https://ai.google.dev) — AI capabilities
-- [Framer Motion](https://www.framer.com/motion/) — Animations
-- [Lucide Icons](https://lucide.dev) — Icon library
-- [Vercel](https://vercel.com) — Serverless deployment
-- [Netlify](https://netlify.com) — Frontend hosting
+- [React](https://react.dev)
+- [Supabase](https://supabase.com)
+- [TensorFlow](https://tensorflow.org)
+- [Scikit-learn](https://scikit-learn.org)
+- [Google Gemini](https://ai.google.dev)
+- [Framer Motion](https://www.framer.com/motion/)
+- [Vercel](https://vercel.com)
+- [Netlify](https://netlify.com)
 
 ---
 
 <div align="center">
-  <b>Built with ❤️ for the freelance community</b>
+  <b>Built for the next generation of intelligent freelance hiring</b>
   <br />
-  <i>GLINT — Where Skills Shine ✨</i>
+  <i>GLINT — Where Skills Shine</i>
 </div>
