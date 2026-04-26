@@ -262,75 +262,7 @@ GLINT/
 
 ---
 
-## Getting Started
-
-### Prerequisites
-
-- **Node.js** v18+ — [Download](https://nodejs.org)
-- **Python** 3.10+
-- **Supabase** account — [Sign up](https://supabase.com)
-- **Vercel** account — [Sign up](https://vercel.com)
-- **Gemini API Key** — [Get key](https://aistudio.google.com/apikey)
-
-### 1. Clone & Install
-
-```bash
-git clone https://github.com/YOUR-USERNAME/GLINT-A_social_platform_for_freelancers.git
-
-cd GLINT-A_social_platform_for_freelancers
-
-npm install
-```
-
-### 2. Install AI Dependencies
-
-```bash
-pip install tensorflow scikit-learn fastapi uvicorn opencv-python
-```
-
-### 3. Set Up Supabase
-
-1. Create a new project at [supabase.com](https://supabase.com)
-2. Go to **SQL Editor** → paste and run `supabase_schema.sql`
-3. Go to **Storage** → create a public bucket named `glint-uploads`
-4. Go to **Settings → API** → copy your Project URL and anon key
-
-### 4. Set Up Environment Variables
-
-Create a `.env` file in the project root:
-
-```env
-VITE_SUPABASE_URL=https://your-project.supabase.co
-VITE_SUPABASE_ANON_KEY=your-anon-key
-VITE_API_URL=https://your-backend.vercel.app
-```
-
-### 5. Run Frontend
-
-```bash
-npm run dev
-```
-
-### 6. Run AI Backend
-
-```bash
-uvicorn app:app --reload
-```
-
-Open [http://localhost:3000](http://localhost:3000)
-
----
-
-## Environment Variables
-
-| Variable | Where | Description |
-|----------|-------|-------------|
-| `VITE_SUPABASE_URL` | Frontend (.env) | Supabase project URL |
-| `VITE_SUPABASE_ANON_KEY` | Frontend (.env) | Supabase public API key |
-| `VITE_API_URL` | Frontend (.env) | Backend API URL |
-| `GEMINI_API_KEY` | Backend | Google Gemini API key |
-
----
+-
 
 ## Screenshots
 
@@ -398,10 +330,6 @@ All AI calls are routed through secure backend APIs to protect sensitive keys an
 - Manage ongoing projects
 
 ---
-
-## License
-
-This project is open source and available under the [MIT License](LICENSE).
 
 ---
 
